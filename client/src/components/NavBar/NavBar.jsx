@@ -13,7 +13,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { ExternalLinkIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { IoLogoGithub } from "react-icons/io5";
 import { useAuthState, useAuth } from "../../utils/AuthContext";
 import { useNavigate } from "react-router";
@@ -64,16 +64,24 @@ const NavBar = () => {
             </Link>
           ) : null}
 
-          <Link
-            _target="_blank"
-            to="https://github.com/DNofulla/mental-health-tracker"
+          <a
+            target="_blank"
+            href="https://github.com/DNofulla/mental-health-tracker"
+            rel="noreferrer"
             style={{ gap: 4, display: "inline-flex", alignItems: "center" }}
             pt={2}
             pl={2}
           >
             <IoLogoGithub />
             Source
-          </Link>
+          </a>
+          <a
+            href="https://www.cdc.gov/mentalhealth/tools-resources/individuals/index.htm"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <ExternalLinkIcon /> Get Help!
+          </a>
           {state.isAuth ? (
             <Link
               to="/posts/new"
@@ -151,17 +159,37 @@ const NavBar = () => {
                   Posts
                 </MenuItem>
 
-                <MenuItem
-                  _hover={{ background: "#323232" }}
-                  _focus={{ backgroundColor: "#323232" }}
-                  _active={{ backgroundColor: "#323232" }}
-                  color="white"
-                  as={Link}
-                  to="https://github.com/DNofulla/mental-health-tracker"
+                <a
+                  href="https://github.com/DNofulla/mental-health-tracker"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  <IoLogoGithub />
-                  Source
-                </MenuItem>
+                  <MenuItem
+                    _hover={{ background: "#323232" }}
+                    _focus={{ backgroundColor: "#323232" }}
+                    _active={{ backgroundColor: "#323232" }}
+                    color="white"
+                  >
+                    <IoLogoGithub />
+                    Source
+                  </MenuItem>
+                </a>
+
+                <a
+                  href="https://www.cdc.gov/mentalhealth/tools-resources/individuals/index.htm"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <MenuItem
+                    _hover={{ background: "#323232" }}
+                    _focus={{ backgroundColor: "#323232" }}
+                    _active={{ backgroundColor: "#323232" }}
+                    color="white"
+                  >
+                    <ExternalLinkIcon />
+                    Get Help!
+                  </MenuItem>
+                </a>
 
                 {!state.isAuth ? (
                   <>
